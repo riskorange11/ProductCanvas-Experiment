@@ -23,12 +23,14 @@ import { InviteCodeScreen } from "./InviteCodeScreen";
 import { LoginScreen } from "./LoginScreen";
 import styles from "./Onboarding.module.scss";
 import { areRequiredPrefsSet } from "./RequiredPrefs";
+import { areTermsAccepted, TermsScreen } from "./TermsScreen";
 import { GodRays, MeshGradient } from "@paper-design/shaders-react";
 
 export function OnboardGate({ children }: React.PropsWithChildren) {
   const { user, hasAccess, authLoaded } = useAuthContext();
   const { prefs } = usePrefsContext();
   const [continueKey, setContinueKey] = useState(0);
+  const termsAccepted = useMemo(() => areTermsAccepted(prefs), [continueKey]);
   // only check on first mount to avoid kicking users out if they delete prefs
   const initialConfigDone = useMemo(
     () => areRequiredPrefsSet(prefs),
@@ -45,6 +47,7 @@ export function OnboardGate({ children }: React.PropsWithChildren) {
   if (!authLoaded) return <Loading />;
   if (!user) return <LoginScreen />;
   if (!hasAccess) return <InviteCodeScreen />;
+  if (!termsAccepted) return <TermsScreen onContinue={() => setContinueKey((k) => k + 1)} />;
   if (!initialConfigDone)
     return (
       <InitialPrefsScreen onContinue={() => setContinueKey((k) => k + 1)} />

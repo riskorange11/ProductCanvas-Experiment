@@ -9,6 +9,7 @@ import { createContext, useContext, useState } from "react";
 const PREFS_KEY = "threep-app-prefs";
 
 export type Prefs = {
+  termsAccepted?: boolean;
   geminiApiKey?: string;
   wakeWord?: boolean;
 };
