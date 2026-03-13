@@ -6,6 +6,12 @@
   idx.extensions = [
     "svelte.svelte-vscode"
     "vue.volar"
+    "eamodio.gitlens"
+    "GitLab.gitlab-workflow"
+    "meta.pyrefly"
+    "ms-python.debugpy"
+    "ms-python.python"
+    "redhat.java"
   ];
   idx.previews = {
     previews = {
