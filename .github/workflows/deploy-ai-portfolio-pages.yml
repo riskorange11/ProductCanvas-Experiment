@@ -2,12 +2,15 @@ name: Deploy AI Portfolio app to GitHub Pages
 
 # Publishes the static app in ai-portfolio-app/ to GitHub Pages.
 # One-time setup: repo Settings → Pages → Build and deployment → Source = "GitHub Actions".
-# Then this runs automatically on pushes to main, or run it manually from the
-# Actions tab (workflow_dispatch) to preview any branch before merging.
+# Then this runs automatically on pushes to main or the feature branch below,
+# or run it manually from the Actions tab (workflow_dispatch, available once the
+# workflow exists on the default branch).
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+      - cursor/ai-portfolio-mobile-app-e48d
     paths:
       - "ai-portfolio-app/**"
       - ".github/workflows/deploy-ai-portfolio-pages.yml"
