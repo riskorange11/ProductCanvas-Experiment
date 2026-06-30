@@ -1,10 +1,10 @@
 name: Deploy AI Portfolio app to GitHub Pages
 
 # Publishes the static app in ai-portfolio-app/ to GitHub Pages.
-# One-time setup: repo Settings → Pages → Build and deployment → Source = "GitHub Actions".
-# Then this runs automatically on pushes to main or the feature branch below,
-# or run it manually from the Actions tab (workflow_dispatch, available once the
-# workflow exists on the default branch).
+# This workflow enables GitHub Pages automatically (configure-pages enablement:true),
+# so no manual repo setting is required. It runs on pushes to main or the feature
+# branch below, or manually from the Actions tab (workflow_dispatch, available once
+# the workflow exists on the default branch).
 
 on:
   push:
@@ -37,6 +37,8 @@ jobs:
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - name: Upload app as Pages artifact
         uses: actions/upload-pages-artifact@v3
