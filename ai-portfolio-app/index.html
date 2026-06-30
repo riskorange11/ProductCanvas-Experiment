@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#0b1020" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="AI Portfolio" />
+  <meta name="description"
+    content="AI Portfolio Management — mobile field guide for enterprise AI adoption, management, and maturity." />
+  <title>AI Portfolio Management</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="icons/icon-180.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- App bar -->
+  <header class="appbar" id="appbar">
+    <button class="appbar__back" id="backBtn" aria-label="Back" hidden>
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+        <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </svg>
+    </button>
+    <div class="appbar__titles">
+      <span class="appbar__eyebrow" id="appbarEyebrow">AI Portfolio</span>
+      <h1 class="appbar__title" id="appbarTitle">Management</h1>
+    </div>
+    <button class="appbar__action" id="searchBtn" aria-label="Search">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+        <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2" />
+        <path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      </svg>
+    </button>
+  </header>
+
+  <!-- Scroll progress -->
+  <div class="progress" id="progress"><span id="progressBar"></span></div>
+
+  <!-- Main view -->
+  <main class="screen" id="screen" tabindex="-1"></main>
+
+  <!-- Search overlay -->
+  <div class="search" id="search" hidden>
+    <div class="search__bar">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" class="search__icon">
+        <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2" />
+        <path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      </svg>
+      <input id="searchInput" type="search" inputmode="search" autocomplete="off" placeholder="Search the wiki…"
+        aria-label="Search the wiki" />
+      <button class="search__close" id="searchClose" aria-label="Close search">Cancel</button>
+    </div>
+    <div class="search__results" id="searchResults"></div>
+  </div>
+
+  <!-- Bottom navigation -->
+  <nav class="tabbar" id="tabbar" aria-label="Primary">
+    <button class="tab" data-tab="home" aria-current="true">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 11l9-8 9 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" />
+        <path d="M5 10v10h14V10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </svg>
+      <span>Home</span>
+    </button>
+    <button class="tab" data-tab="sections">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="4" y="4" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="2" />
+        <rect x="13" y="4" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="2" />
+        <rect x="4" y="13" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="2" />
+        <rect x="13" y="13" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="2" />
+      </svg>
+      <span>Sections</span>
+    </button>
+    <button class="tab" data-tab="tools">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M14.7 6.3a4 4 0 00-5.4 5.4L4 17v3h3l5.3-5.3a4 4 0 005.4-5.4l-2.4 2.4-2.1-.6-.6-2.1z"
+          fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+      </svg>
+      <span>Tools</span>
+    </button>
+    <button class="tab" data-tab="bookmarks">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M6 4h12v16l-6-4-6 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+      </svg>
+      <span>Saved</span>
+    </button>
+  </nav>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="data.js"></script>
+  <script src="tools.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
